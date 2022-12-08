@@ -1,10 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Models
 {
@@ -31,7 +25,7 @@ namespace Models
         public string Street { get; set; }
 
         [Required]
-        public User Landlord { get; set; }
+        public Landlord Landlord { get; set; }
 
         public ICollection<BedPrize> BedPrizes { get; set; }
 

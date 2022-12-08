@@ -22,6 +22,7 @@ namespace Models
             modelBuilder.Entity<Apartment>();
             modelBuilder.Entity<ApartmentFeature>();
             modelBuilder.Entity<BedPrize>();
+            modelBuilder.Entity<Landlord>();
             modelBuilder.Entity<Rental>();
             modelBuilder.Entity<User>();
         }
@@ -31,6 +32,8 @@ namespace Models
         public DbSet<ApartmentFeature> ApartmentsFeatures { get; set; }
 
         public DbSet<BedPrize> BedPrizes { get; set; }
+
+        public DbSet<Landlord> Landlords { get; set; }
 
         public DbSet<Rental> Rentals { get; set; }
 

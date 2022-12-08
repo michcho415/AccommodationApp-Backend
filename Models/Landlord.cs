@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    public class User
+    public class Landlord
     {
         [Key]
         public int ID { get; set; }
@@ -21,9 +21,7 @@ namespace Models
         [MaxLength(100)]
         public string EmailAddress { get; set; } = string.Empty;
 
-        [Required]
-        public bool IsAdmin { get; set; }
+        public ICollection<Apartment> Apartments { get; set; }
 
-        public ICollection<Rental> Rentals { get; set; }
     }
 }
