@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
@@ -9,17 +10,17 @@ namespace Models
 
         [Required]
         [MaxLength(50)]
-        public string Username { get; set; } = string.Empty;
+        public string Username { get; set; }
 
         [Required]
-        public string Password { get; set; } = string.Empty;
+        public string Password { get; set; }
 
         [MaxLength(12)]
-        public string Phone { get; set; } = string.Empty;
+        public string? Phone { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string EmailAddress { get; set; } = string.Empty;
+        public string EmailAddress { get; set; }
 
         [Required]
         public bool IsAdmin { get; set; }

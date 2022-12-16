@@ -24,7 +24,14 @@ namespace Models
             modelBuilder.Entity<BedPrize>();
             modelBuilder.Entity<Landlord>();
             modelBuilder.Entity<Rental>();
-            modelBuilder.Entity<User>();
+            modelBuilder.Entity<User>().HasData(new User()
+            {
+                ID = 1,
+                Username = "Admin",
+                Password = "admin",
+                EmailAddress = "dupa@a.com",
+                IsAdmin = true
+            });
         }
 
         public DbSet<Apartment> Apartments { get; set; }
