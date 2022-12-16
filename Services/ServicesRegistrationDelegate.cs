@@ -8,6 +8,7 @@ namespace Services
         public static void RegisterServices(this IServiceCollection services)
         {
             services.AddTransient<IBookingService, BookingService>();
+            services.AddTransient<IUserService, UserService>();
         }
     }
 }

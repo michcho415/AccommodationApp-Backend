@@ -5,16 +5,8 @@ namespace Models
 {
     public class DatabaseContext : DbContext
     {
-        private readonly IConfiguration configuration;
-
-        public DatabaseContext(IConfiguration configuration) : base()
+        public DatabaseContext(DbContextOptions options) : base(options)
         {
-            this.configuration = configuration;
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

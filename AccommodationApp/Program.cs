@@ -28,13 +28,14 @@ builder.Services.AddFluentValidationAutoValidation()
 
 builder.Services.RegisterValidators();
 
-builder.Services.AddDbContext<DatabaseContext>();
+builder.Services.AddDbContextFactory<DatabaseContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
