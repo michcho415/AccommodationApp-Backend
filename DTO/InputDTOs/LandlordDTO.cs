@@ -2,7 +2,7 @@
 
 namespace DTO.InputDTOs
 {
-    public class UserDTO
+    public class LandlordDTO
     {
         public string Username { get; set; }
 
@@ -11,13 +11,11 @@ namespace DTO.InputDTOs
         public string? Phone { get; set; }
 
         public string EmailAddress { get; set; }
-
-        public bool IsAdmin { get; set; }
     }
 
-    public class UserDTOValidator : AbstractValidator<UserDTO>
+    public class LandlordDTOValidator : AbstractValidator<LandlordDTO>
     {
-        public UserDTOValidator()
+        public LandlordDTOValidator()
         {
             RuleFor(x => x.Username).NotEmpty();
             RuleFor(x => x.Password).NotEmpty().MinimumLength(8);

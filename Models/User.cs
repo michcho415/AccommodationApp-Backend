@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
@@ -13,9 +12,10 @@ namespace Models
         public string Username { get; set; }
 
         [Required]
+        [MaxLength(84)]
         public string Password { get; set; }
 
-        [MaxLength(12)]
+        [MaxLength(14)]
         public string? Phone { get; set; }
 
         [Required]

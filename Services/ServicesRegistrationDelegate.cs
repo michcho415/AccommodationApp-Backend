@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System.ComponentModel.Design;
 
 namespace Services
 {
@@ -9,6 +8,7 @@ namespace Services
         {
             services.AddTransient<IBookingService, BookingService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ILandlordService, LandlordService>();
         }
     }
 }

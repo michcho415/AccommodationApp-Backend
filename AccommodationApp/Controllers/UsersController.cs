@@ -20,5 +20,17 @@ namespace AccommodationApp.Controllers
         {
             return await _userService.CreateAsync(user);
         }
+
+        [HttpPost("authenticate")]
+        public async Task<IActionResult> AuthenticateAsync(LoginDTO login)
+        {
+            return await _userService.AuthenticateAsync(login);
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteAsync(int id)
+        {
+            return await _userService.DeleteAsync(id);
+        }
     }
 }
