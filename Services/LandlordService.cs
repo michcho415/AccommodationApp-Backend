@@ -21,6 +21,9 @@ namespace Services
             var existingLandlord = await GetAsync(landlord.Username);
             if (existingLandlord != null)
                 return new UnprocessableEntityResult();
+            var existingEmail = await GetByEmailAsync(landlord.EmailAddress);
+            if (existingEmail != null)
+                return new UnprocessableEntityResult();
 
             var newLandlord = new Landlord()
             {
@@ -38,6 +41,12 @@ namespace Services
                 await context.SaveChangesAsync();
             }
             return new OkResult();
+        }
+
+        private async Task<Landlord?> GetByEmailAsync(string emailAddress)
+        {
+            using (DatabaseContext context = contextFactory.CreateDbContext())
+                return await context.Landlords.FirstOrDefaultAsync(l => l.EmailAddress == emailAddress);
         }
 
         private async Task<Landlord?> GetAsync(string username)

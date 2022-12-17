@@ -21,6 +21,9 @@ namespace Services
             var existingUser = await GetAsync(user.Username);
             if (existingUser != null)
                 return new UnprocessableEntityResult();
+            var existingEmail = await GetByEmailAsync(user.EmailAddress);
+            if (existingEmail != null)
+                return new UnprocessableEntityResult();
 
             var newUser = new User()
             {
@@ -45,6 +48,12 @@ namespace Services
         {
             using (DatabaseContext context = contextFactory.CreateDbContext())
                 return await context.Users.FirstOrDefaultAsync(u => u.Username == username);
+        }
+
+        private async Task<User?> GetByEmailAsync(string emailAddress)
+        {
+            using (DatabaseContext context = contextFactory.CreateDbContext())
+                return await context.Users.FirstOrDefaultAsync(u => u.EmailAddress == emailAddress);
         }
 
         public async Task<IActionResult> DeleteAsync(int id)
