@@ -13,7 +13,7 @@ namespace DTO.InputDTOs
             public LoginDTOValidator()
             {
                 RuleFor(x => x.Login).NotEmpty();
-                RuleFor(x => x.Password).NotEmpty().MinimumLength(8);
+                RuleFor(x => x.Password).NotEmpty();
             }
         }
     }

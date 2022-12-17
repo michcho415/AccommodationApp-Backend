@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Models
 {
@@ -16,14 +16,16 @@ namespace Models
             modelBuilder.Entity<BedPrize>();
             modelBuilder.Entity<Landlord>();
             modelBuilder.Entity<Rental>();
-            modelBuilder.Entity<User>().HasData(new User()
+            var admin = new User()
             {
                 ID = 1,
                 Username = "Admin",
-                Password = "admin",
                 EmailAddress = "dupa@a.com",
                 IsAdmin = true
-            });
+            };
+            PasswordHasher<User> hasher = new();
+            admin.Password = hasher.HashPassword(admin, "admin");
+            modelBuilder.Entity<User>().HasData(admin);
         }
 
         public DbSet<Apartment> Apartments { get; set; }
