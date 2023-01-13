@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace DTO.InputDTOs
 {
-    public class AddFeatureToApartmentDTO
+    public class AddFeaturesToApartmentDTO
     {
         public List<int>? ApartmentFeaturesIDs { get; set; }
         public int ApartmentID { get; set; }
     }
 
-    public class AddFeatureToApartmentValidator : AbstractValidator<AddFeatureToApartmentDTO>
+    public class AddFeatureToApartmentValidator : AbstractValidator<AddFeaturesToApartmentDTO>
     {
         public AddFeatureToApartmentValidator() 
         {

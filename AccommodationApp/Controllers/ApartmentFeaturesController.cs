@@ -18,7 +18,7 @@ namespace AccommodationApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddNewFeature(ApartmentFeatureDTO featureDTO)
+        public async Task<IActionResult> AddNewFeatureAsync(ApartmentFeatureDTO featureDTO)
         {
             return await apartmentFeaturesService.AddNewFeature(featureDTO);
         }

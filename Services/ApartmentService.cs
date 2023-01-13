@@ -39,6 +39,10 @@ namespace Services
                 if (landlord == null)
                     return new UnauthorizedObjectResult(apartmentDto.LandlordID);
 
+                //check if apartments with the same name and city already exists
+                if (ctx.Apartments.Any(x => x.Name == apartmentDto.Name && x.City == apartmentDto.City))
+                    return new UnprocessableEntityObjectResult("Such apartment already exists.");
+
                 var newApartment = new Apartment()
                 {
                     Name = apartmentDto.Name,
@@ -83,6 +87,8 @@ namespace Services
         {
             using(DatabaseContext ctx = contextFactory.CreateDbContext())
             {
+                //TO DO: check if user that makes request has permission
+
                 var apartment = await ctx.Apartments.FirstOrDefaultAsync(x => x.ID == id);
 
                 if (apartment == null)

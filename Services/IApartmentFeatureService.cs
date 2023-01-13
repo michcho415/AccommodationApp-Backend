@@ -12,7 +12,7 @@ namespace Services
 {
     public interface IApartmentFeatureService
     {
-        public Task<IActionResult> AddNewFeature(ApartmentFeatureDTO apartmentFeatureDTO);
+        public Task<IActionResult> AddNewFeatureAsync(ApartmentFeatureDTO apartmentFeatureDTO);
 
         public Task<ICollection<ApartmentFeature>?> GetListOfFeaturesForApartment(int apartmentID);
 

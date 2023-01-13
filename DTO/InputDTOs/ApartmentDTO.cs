@@ -24,7 +24,6 @@ namespace DTO.InputDTOs
             public ApartmentDTOValidator()
             {
                 RuleFor(x => x.Name).NotEmpty();
-                RuleFor(x => x.Description).NotEmpty();
                 RuleFor(x => x.City).NotEmpty();
                 RuleFor(x => x.LandlordID).NotNull();
                 RuleFor(x => x.MaxBedNumbers).GreaterThanOrEqualTo(1);

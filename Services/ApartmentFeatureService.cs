@@ -20,13 +20,13 @@ namespace Services
             this.contextFactory = contextFactory;
         }
 
-        public async Task<IActionResult> AddNewFeature(ApartmentFeatureDTO apartmentFeatureDTO)
+        public async Task<IActionResult> AddNewFeatureAsync(ApartmentFeatureDTO apartmentFeatureDTO)
         {
             using(DatabaseContext ctx = contextFactory.CreateDbContext())
             {
-                if (await ctx.ApartmentsFeatures.FirstOrDefaultAsync(
-                  x => x.FeatureName.ToLower()
-                  .Equals(apartmentFeatureDTO.Name.ToLower())) != null)
+                if (await ctx.ApartmentsFeatures
+                    .FirstOrDefaultAsync(x => x.FeatureName.ToLower()
+                    .Equals(apartmentFeatureDTO.Name.ToLower())) != null)
                     return new UnprocessableEntityObjectResult("This feature already exists.");
 
                 await ctx.ApartmentsFeatures.AddAsync(
@@ -52,7 +52,7 @@ namespace Services
             }
         }
 
-        public async Task<IActionResult> AddFeaturesToApartment(AddFeatureToApartmentDTO addFeatureToApartmentDTO)
+        public async Task<IActionResult> AddFeaturesToApartment(AddFeaturesToApartmentDTO addFeatureToApartmentDTO)
         {
             using (DatabaseContext ctx = contextFactory.CreateDbContext())
             {
