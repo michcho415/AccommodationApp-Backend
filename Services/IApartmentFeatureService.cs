@@ -14,10 +14,10 @@ namespace Services
     {
         public Task<IActionResult> AddNewFeatureAsync(ApartmentFeatureDTO apartmentFeatureDTO);
 
-        public Task<ICollection<ApartmentFeature>?> GetListOfFeaturesForApartment(int apartmentID);
+        public Task<ICollection<ApartmentFeature>?> GetListOfFeaturesForApartmentAsync(int apartmentID);
 
-        public Task<IActionResult> AddFeaturesToApartment(AddFeatureToApartmentDTO addFeatureToApartmentDTO);
+        public Task<IActionResult> AddFeaturesToApartmentAsync(AddFeaturesToApartmentDTO addFeatureToApartmentDTO);
 
-        public Task<ApartmentsFeaturesListDto> GetListOfAllFeatures(PaginationDTO paginationDTO);
+        public Task<ApartmentsFeaturesListDto> GetListOfAllFeaturesAsync(PaginationDTO paginationDTO);
     }
 }

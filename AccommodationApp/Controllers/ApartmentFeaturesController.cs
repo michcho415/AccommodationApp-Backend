@@ -20,26 +20,26 @@ namespace AccommodationApp.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNewFeatureAsync(ApartmentFeatureDTO featureDTO)
         {
-            return await apartmentFeaturesService.AddNewFeature(featureDTO);
+            return await apartmentFeaturesService.AddNewFeatureAsync(featureDTO);
         }
 
         [HttpGet("Apartment")]
 
-        public async Task<ICollection<ApartmentFeature>?> GetListOfFeaturesForApartment([FromQuery]int apartmentID)
+        public async Task<ICollection<ApartmentFeature>?> GetListOfFeaturesForApartmentAsync([FromQuery]int apartmentID)
         {
-            return await apartmentFeaturesService.GetListOfFeaturesForApartment(apartmentID);
+            return await apartmentFeaturesService.GetListOfFeaturesForApartmentAsync(apartmentID);
         }
 
         [HttpPost("AddToApartment")]
-        public async Task<IActionResult> AddFeaturesToApartment(AddFeatureToApartmentDTO addFeatureToApartmentDTO)
+        public async Task<IActionResult> AddFeaturesToApartmentAsync(AddFeaturesToApartmentDTO addFeatureToApartmentDTO)
         {
-            return await apartmentFeaturesService.AddFeaturesToApartment(addFeatureToApartmentDTO);
+            return await apartmentFeaturesService.AddFeaturesToApartmentAsync(addFeatureToApartmentDTO);
         }
 
         [HttpGet]
-        public async Task<ApartmentsFeaturesListDto> GetListOfAllFeatures(PaginationDTO paginationDTO)
+        public async Task<ApartmentsFeaturesListDto> GetListOfAllFeaturesAsync(PaginationDTO paginationDTO)
         {
-            return await apartmentFeaturesService.GetListOfAllFeatures(paginationDTO);
+            return await apartmentFeaturesService.GetListOfAllFeaturesAsync(paginationDTO);
         }
     }
 }

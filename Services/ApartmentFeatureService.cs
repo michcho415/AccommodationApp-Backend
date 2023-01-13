@@ -40,7 +40,7 @@ namespace Services
             return new OkResult();
         }
 
-        public async Task<ICollection<ApartmentFeature>?> GetListOfFeaturesForApartment(int apartmentID)
+        public async Task<ICollection<ApartmentFeature>?> GetListOfFeaturesForApartmentAsync(int apartmentID)
         {
             using(DatabaseContext ctx = contextFactory.CreateDbContext())
             {
@@ -52,7 +52,7 @@ namespace Services
             }
         }
 
-        public async Task<IActionResult> AddFeaturesToApartment(AddFeaturesToApartmentDTO addFeatureToApartmentDTO)
+        public async Task<IActionResult> AddFeaturesToApartmentAsync(AddFeaturesToApartmentDTO addFeatureToApartmentDTO)
         {
             using (DatabaseContext ctx = contextFactory.CreateDbContext())
             {
@@ -76,7 +76,7 @@ namespace Services
             return new OkResult();
         }
 
-        public async Task<ApartmentsFeaturesListDto> GetListOfAllFeatures(PaginationDTO paginationDTO)
+        public async Task<ApartmentsFeaturesListDto> GetListOfAllFeaturesAsync(PaginationDTO paginationDTO)
         {
             int page = paginationDTO.Page;
             int numberOfElements = paginationDTO.NumberOfElements;
