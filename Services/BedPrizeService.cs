@@ -29,7 +29,7 @@ namespace Services
                 if (apartment == null)
                     return new UnauthorizedObjectResult(bedPrizeDto.ApartmentId);
 
-                var bedPrice = await context.BedPrizes.AnyAsync(x => x.Id == bedPrizeDto.ApartmentId && x.BedsCount == bedPrizeDto.BedsCount);
+                var bedPrice = await context.BedPrizes.AnyAsync(x => x.Apartment == apartment && x.BedsCount == bedPrizeDto.BedsCount);
                 if (bedPrice)
                     return new UnprocessableEntityObjectResult("Such bed prize already exists.");
 
