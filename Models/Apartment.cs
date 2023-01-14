@@ -27,6 +27,9 @@ namespace Models
         [Required]
         public Landlord Landlord { get; set; }
 
+        [MaxLength(255)]
+        public string? PhotoFilePath { get; set; }
+
         public ICollection<BedPrize> BedPrizes { get; set; }
 
         public ICollection<ApartmentFeature> ApartmentFeatures { get; set; }
