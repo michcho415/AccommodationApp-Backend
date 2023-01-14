@@ -13,9 +13,9 @@ namespace DTO.InputDTOs
         public int ApartmentID { get; set; }
     }
 
-    public class AddFeatureToApartmentValidator : AbstractValidator<AddFeaturesToApartmentDTO>
+    public class AddFeaturesToApartmentValidator : AbstractValidator<AddFeaturesToApartmentDTO>
     {
-        public AddFeatureToApartmentValidator() 
+        public AddFeaturesToApartmentValidator() 
         {
             RuleFor(x => x.ApartmentFeaturesIDs).NotEmpty().NotNull();
             RuleFor(x => x.ApartmentID).NotNull();
