@@ -22,6 +22,9 @@ namespace Models
         [MaxLength(100)]
         public string EmailAddress { get; set; }
 
+        [Required]
+        public bool ActiveFlag { get; set; } = false;
+
         public ICollection<Apartment> Apartments { get; set; }
 
     }
