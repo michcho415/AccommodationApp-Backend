@@ -16,8 +16,4 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="7.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -1,5 +1,8 @@
 ﻿using DTO.InputDTOs;
+using DTO.OutputDTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 using Services;
 
 namespace AccommodationApp.Controllers
@@ -22,7 +25,7 @@ namespace AccommodationApp.Controllers
         }
 
         [HttpPost("authenticate")]
-        public async Task<IActionResult> AuthenticateAsync(LoginDTO login)
+        public async Task<LoginResponseDTO?> AuthenticateAsync(LoginDTO login)
         {
             return await _landlordService.AuthenticateAsync(login);
         }
@@ -31,6 +34,13 @@ namespace AccommodationApp.Controllers
         public async Task<IActionResult> DeleteAsync(int id)
         {
             return await _landlordService.DeleteAsync(id);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ICollection<Landlord>?> GetAll()
+        {
+            return await _landlordService.GetAll();
         }
     }
 }

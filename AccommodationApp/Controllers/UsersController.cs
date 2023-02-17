@@ -1,5 +1,8 @@
-﻿using DTO.InputDTOs;
+﻿using Common;
+using DTO.InputDTOs;
+using DTO.OutputDTOs;
 using Microsoft.AspNetCore.Mvc;
+using Models;
 using Services;
 
 namespace AccommodationApp.Controllers
@@ -22,7 +25,7 @@ namespace AccommodationApp.Controllers
         }
 
         [HttpPost("authenticate")]
-        public async Task<IActionResult> AuthenticateAsync(LoginDTO login)
+        public async Task<LoginResponseDTO?> AuthenticateAsync(LoginDTO login)
         {
             return await _userService.AuthenticateAsync(login);
         }
@@ -31,6 +34,13 @@ namespace AccommodationApp.Controllers
         public async Task<IActionResult> DeleteAsync(int id)
         {
             return await _userService.DeleteAsync(id);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ICollection<User>?> GetAll()
+        {
+            return await _userService.GetAll();
         }
     }
 }

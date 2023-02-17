@@ -1,10 +1,13 @@
 using Services;
-using FluentValidation;
 using FluentValidation.AspNetCore;
 using DTO;
 using Microsoft.EntityFrameworkCore;
 using Models;
+using Common;
+using Helpers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.Development.json").Build();
 builder.Services.AddSingleton<IConfiguration>(configuration);
+var appSettings = configuration.GetSection("AppSettings");
+builder.Services.Configure<AppSettings>(appSettings);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -24,7 +29,8 @@ builder.Services.RegisterServices();
 builder.Services.AddFluentValidationAutoValidation()
     .AddFluentValidationClientsideAdapters();
 
-
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer();
 
 builder.Services.RegisterValidators();
 
@@ -54,6 +60,9 @@ app.UseCors("Default");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+// custom jwt auth middleware
+app.UseMiddleware<JwtMiddleware>();
 
 app.MapControllers();
 

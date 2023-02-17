@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Models
 {
@@ -13,6 +14,7 @@ namespace Models
 
         [Required]
         [MaxLength(84)]
+        [JsonIgnore]
         public string Password { get; set; }
 
         [MaxLength(14)]
